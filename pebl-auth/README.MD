@@ -1,6 +1,8 @@
 PeBL Auth Server 
 ==============
 
+PeBL typically requires a Keycloak account to use for its user login / authentication.  Our version does allow guest access, but it's recommended to use an instance of PeBL that does point at a functioning Keycloak instance.
+
 Like anything else we write, this server uses Docker and Docker Compose.  While this **should** promise a no-hassle installation process, please contact the ADL team if you encounter issues.
 
 ### TL;DR
