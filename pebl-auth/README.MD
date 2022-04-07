@@ -1,14 +1,5 @@
-ADL Auth Server 
+PeBL Auth Server 
 ==============
-
-This folder contains the auth server components:
-
-- Keycloak Authentication Service (Quay's 11.0.3 version)
-- An in-house Keycloak Helper API
-- Service Registry
-
-Server Setup
-------------
 
 Like anything else we write, this server uses Docker and Docker Compose.  While this **should** promise a no-hassle installation process, please contact the ADL team if you encounter issues.
 
