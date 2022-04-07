@@ -1,0 +1,11 @@
+/node_modules/
+/dist/
+logging/*
+/src/serverConfig.json
+/src/serverConfig2.json
+/run.sh
+/src/serB
+/dockerPg.tar.gz
+/dockerRedis.tar.gz
+/pullServices.sh
+/adl-1-docker-compose.yml

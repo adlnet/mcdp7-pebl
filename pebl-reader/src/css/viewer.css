@@ -1,0 +1,1092 @@
+#readerCurrentClass {
+    color: gray;
+}
+
+#epub-reader-frame {
+    display: inline-block;
+    height: 100%;
+    position: relative;
+
+    width: 100%;
+    overflow: auto;
+
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+}
+
+#skip-main {
+    position: absolute;
+    left: -1000px;
+    top: auto;
+}
+
+a.skip-main {
+    left: -999px;
+    position: absolute;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: -999;
+}
+
+a.skip-main:focus {
+    left: auto;
+    top: auto;
+    width: 30%;
+    height: auto;
+    overflow: auto;
+    margin: 0 35%;
+    padding: 5px;
+    font-size: 20px;
+    outline: 3px solid red;
+    text-align: center;
+    z-index: 999;
+}
+
+#about-dialog div {
+    text-align: center;
+}
+
+.icon-annotations {
+    /*
+  display:none;
+  See the annotations / highlighter plugin setup in EpubReader.js (PLUGINS_LOADED event)
+  */
+}
+
+html#simpleViewer .icon-library {
+    display: none;
+}
+
+.about-message {
+    margin: 20px 0px;
+}
+
+#about-dialog .version {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#about-dialog .version-details,
+#about-dialog .build-date {
+    font-size: 0.8em;
+}
+
+#about-dialog .local-changes-alert {
+    color: red;
+}
+
+.sidebar-body {
+    float: right;
+    position: relative;
+    padding: 1.5em;
+    overflow-y: auto;
+    background: #f3f3f3;
+    border: solid 1px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar-body button.close {
+    opacity: 0.8;
+    background-color: white;
+    width: 1.25em;
+    height: 1.25em;
+    border-radius: 1000px;
+}
+
+.sidebar-body button.close:hover {
+    opacity: 1;
+    color: white;
+    background-color: #999;
+}
+
+#annotations-body,
+#bookmarks-body,
+#readium-toc-body,
+#search-body {
+    display: none;
+}
+
+#bookmarks-body-list {
+    margin-left: 1em;
+}
+
+#bookmarks-body-list > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+#bookmarks-body-list span {
+    color: #337ab7;
+    cursor: pointer;
+    margin-right: 1em;
+}
+
+#bookmarks-body-list span:hover {
+    text-decoration: underline;
+    filter: brightness(0.5);
+}
+
+#bookmarks-body-list i {
+    margin-right: 1em;
+    cursor: pointer;
+}
+
+/*
+#readium-toc-body *[dir=rtl]{
+direction: rtl;
+}
+*/
+
+#readium-toc-body ol {
+    list-style-type: none;
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+#readium-toc-body a.complete,
+#readium-toc-body a.complete ~ ol a {
+    color: #037b05;
+}
+
+#readium-toc-body a.complete::before,
+#readium-toc-body a.complete ~ ol a::before {
+    content: "\2713 ";
+    width: 1em;
+    display: inline-block;
+    font-weight: 700 !important;
+    position: relative;
+    left: -0.5rem;
+    margin-left: -1rem;
+}
+
+.toc-visible #readium-toc-body {
+    display: inline-block;
+    width: 30%;
+}
+
+.toc-visible #reading-area {
+    right: 30%;
+}
+
+.annotations-visible #annotations-body {
+    display: inline-block;
+    width: 30%;
+}
+
+.annotations-visible #reading-area {
+    right: 30%;
+}
+
+.bookmarks-visible #bookmarks-body {
+    display: inline-block;
+    width: 30%;
+}
+
+.bookmarks-visible #reading-area {
+    right: 30%;
+}
+
+.search-visible #search-body {
+    display: inline-block;
+    width: 30%;
+}
+
+.search-visible #reading-area {
+    right: 30%;
+}
+
+.bookmark-wrapper {
+    float: left;
+}
+
+.bookmark-wrapper a {
+    color: #ddd;
+}
+
+.dropdown-menu > li {
+    cursor: pointer;
+}
+
+.dropdown-menu > li > span {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+}
+
+.dropdown-menu > li > span:hover {
+    color: #262626;
+    background-color: #f5f5f5;
+}
+
+#bookmarkModal,
+#annotationNoteModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    transform: translate(-50%, -50%);
+    z-index: 5000;
+}
+
+#bookmarkInput,
+#annotationInput {
+    width: 100%;
+}
+
+#annotationInput {
+    min-height: 5em;
+    resize: vertical;
+}
+
+#bookmarkSubmit,
+#noteSubmit {
+    width: 50%;
+    height: 50px;
+}
+
+#bookmarkCancel,
+#noteCancel {
+    width: 50%;
+    height: 50px;
+}
+
+.navbar {
+    z-index: 888;
+}
+
+/* toolbar */
+.navbar .btn-group > .btn {
+    border: none;
+    border-radius: 0px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.navbar .btn-group > .btn:hover,
+.navbar .btn-group > .btn:active,
+.navbar .btn-group > .btn:focus {
+    box-shadow: none;
+}
+
+.navbar .btn {
+    color: #ddd;
+    font-size: 16px;
+    width: 48px;
+    height: 36px;
+    background: no-repeat center center;
+    background-color: #ffffff;
+}
+
+#aboutButt1 {
+    width: auto;
+}
+
+.navbar {
+    background: #ffffff;
+    /*box-shadow: 0px 1px 5px #333;*/
+    border-radius: 0px;
+    min-height: 36px;
+    margin-bottom: 0px;
+}
+
+.navbar-right {
+    overflow: visible;
+    height: 0.4em;
+    margin-right: 0 !important;
+
+    min-height: 36px;
+    background-color: #ffffff;
+}
+
+.navbar-left {
+    /* width: 50%; */
+    /* overflow: hidden; */
+    height: 35px;
+}
+
+.book-title-header {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    text-align: center;
+    color: #999;
+    font-weight: normal;
+    font-size: 1em;
+    letter-spacing: 0.5em;
+    margin: 15px 0px 0px 0px;
+    z-index: -1;
+    font-family: serif;
+}
+
+html[data-theme="night-theme"] .book-title-header,
+html[data-theme="night-theme"] body,
+html[data-theme="night-theme"] #readium-toc-body {
+    background-color: #333333;
+    color: white;
+}
+
+html[data-theme="night-theme"] .modal {
+    color: black;
+}
+
+/*.icon-show-hide, .icon-show-hide:active{
+  display: none;
+}*/
+/*.icon-annotations, .icon-annotations:active{
+  background-image: url('../images/glyphicons_150_edit.png');
+}
+.icon-full-screen, .icon-full-screen:active{
+  background-image: url('../images/glyphicons_215_resize_full.png');
+}*/
+
+/*.icon-settings, .icon-settings:active{
+  background-image: url('../images/glyphicons_136_cogwheel.png');
+}*/
+#webreaderTitle {
+    color: #5b616b;
+    display: inline-block;
+    font-size: 16px;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.navbar .icon-logo,
+.navbar .icon-logo:active {
+    background-image: url("../images/webreader_logo_eduworks.png");
+    width: 130px;
+    background-size: auto 28px !important;
+}
+
+.icon-scale-down {
+    text-align: right;
+}
+
+.clickable {
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+}
+
+.offscreen-text {
+    display: none;
+}
+
+.page-switch-overlay-icon {
+    overflow: hidden;
+    display: block;
+    position: absolute;
+
+    top: 20%;
+    bottom: 20%;
+
+    opacity: 0.3;
+
+    z-index: 99 !important;
+
+    border: none !important;
+
+    padding: 0;
+    margin: 0;
+    padding-top: 0.2em;
+    padding-bottom: 0.44em;
+
+    font-size: 40px;
+
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+}
+
+html[data-theme="night-theme"] .page-switch-overlay-icon {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+}
+
+.page-switch-overlay-icon > span {
+    padding: 0;
+    margin: 0;
+
+    vertical-align: middle;
+}
+
+#left-page-btn,
+#right-page-btn {
+    transition: background-color 0.2s ease-out;
+    -webkit-transition: background-color 0.2s ease-out;
+}
+
+#left-page-btn:hover,
+#right-page-btn:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#left-page-btn {
+    left: 0;
+    border-top-right-radius: 0.3em;
+    border-bottom-right-radius: 0.3em;
+    opacity: 1;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* #left-page-btn:focus, */
+/*#left-page-btn:hover
+{
+  opacity: 1.0;
+  color: white;
+  background-color: rgba(0,0,0,0.2);
+}*/
+
+/* html[data-theme=night-theme] #left-page-btn:focus, */
+html[data-theme="night-theme"] #left-page-btn:hover {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#right-page-btn {
+    right: 0;
+    border-top-left-radius: 0.3em;
+    border-bottom-left-radius: 0.3em;
+    opacity: 1;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* #right-page-btn:focus, */
+/*#right-page-btn:hover
+{
+  opacity: 1.0;
+  color: white;
+  background-color: rgba(0,0,0,0.2);
+}*/
+/* html[data-theme=night-theme] #right-page-btn:focus, */
+html[data-theme="night-theme"] #right-page-btn:hover {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#app-container {
+    overflow: hidden;
+}
+
+#reading-area {
+    text-align: center;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 38px;
+
+    overflow: hidden;
+}
+
+/* show outline on reading-area when iframe gets focus */
+.contentFocus {
+    /* box-shadow: 0px 0px 5px #6fb5f1 !important; */
+
+    outline: #6fb5f1 dotted 1px !important;
+
+    outline-offset: -3px;
+}
+
+#epub-reader-container {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+
+    overflow: hidden;
+}
+
+/* embedded mode styles */
+.embedded .navbar .btn-group > .btn.icon-full-screen,
+.embedded .navbar .btn-group > .btn.icon-toc {
+    display: inline-block;
+    opacity: 1;
+}
+
+.hide-ui .navbar {
+    -webkit-transition: all 0.2s ease-out;
+    opacity: 1;
+}
+
+.hide-ui #left-page-btn,
+.hide-ui #right-page-btn,
+.embedded .toc-visible #left-page-btn,
+.embedded .toc-visible #right-page-btn {
+    -webkit-transition: opacity 0.2s ease-out;
+    opacity: 1;
+}
+
+/*
+.hide-ui #left-page-btn:hover, 
+.hide-ui #right-page-btn:hover{
+   -webkit-transition: opacity .2s ease-out;
+  opacity: 1;
+}*/
+
+.embedded .navbar .btn-group > .btn.icon-full-screen {
+    float: right;
+}
+
+.btn.icon-full-screen {
+    display: none !important;
+}
+
+/*
+.embedded .navbar .btn-group > .btn, .embedded .navbar .btn-group > .btn:hover, .embedded .navbar .btn-group > .btn:active, .embedded .navbar .btn-group > .btn:focus{
+  background-color: rgba(0,0,0,0.2);
+}
+*/
+
+.embedded .navbar {
+    position: absolute;
+    top: 0px;
+    z-index: 2;
+    margin: 0px;
+    padding: 2px 5px 2px 5px;
+    width: 100%;
+    min-height: 0px;
+    border-radius: 0px;
+}
+
+/*.embedded .navbar.user-displayed{
+  background-color: rgba(0,0,0,0.8);
+}
+
+.embedded .navbar.user-displayed .btn-group > .btn {
+  display: block;
+  background-color: transparent;
+}*/
+
+.embedded #app-container #reading-area {
+    top: 10px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.embedded #reflowable-content-frame {
+    margin: 20px;
+}
+
+.embedded .navbar .btn {
+    width: 24px;
+    height: 24px;
+    display: none;
+}
+
+.embedded .navbar .btn-group > .btn {
+    border-radius: 4px !important;
+}
+
+/*.embedded .icon-show-hide, .embedded .icon-show-hide:active{
+  background-image: url('../images/white-more.png');
+  background-size: 16px 4px;
+  display: block;
+}*/
+
+/*.embedded .navbar.user-displayed .btn-group .icon-show-hide{
+  background-image: url('../images/white-remove.png');
+  background-size: 16px 16px;
+}*/
+
+.embedded .icon-full-screen,
+.embedded .icon-full-screen:active {
+    background-image: url("../images/white-resize-full.png");
+    background-size: 16px 16px;
+}
+
+.embedded .icon-full-screen:-webkit-full-screen-document {
+    background-image: url("../images/white-resize-small.png");
+}
+
+.embedded .icon-full-screen:-moz-full-screen {
+    background-image: url("../images/white-resize-small.png");
+}
+
+.embedded .icon-full-screen:fullscreen {
+    background-image: url("../images/white-resize-small.png");
+}
+
+/*.embedded .icon-settings, .embedded .icon-settings:active{
+  background-image: url('../images/white-cogwheel.png');
+  background-size: 16px 16px;
+}*/
+
+.embedded .navbar .btn-group > .btn {
+    display: none;
+}
+
+.embedded .icon-toc,
+.embedded .icon-toc:active {
+    background-image: url("../images/white-list.png");
+    background-size: 16px 16px;
+}
+
+.embedded #readium-toc-body {
+    top: -100%;
+    -webkit-transition: top 0.3s ease-out;
+    -moz-transition: -moz-transform 0.3s ease-out;
+    -o-transition: -o-transform 0.3s ease-out;
+    transition: transform 0.3s ease-out;
+    display: block;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+.embedded .toc-visible #readium-toc-body {
+    top: 0%;
+    -webkit-transition: top 0.3s ease-out;
+    /*-moz-transition: -moz-transform .3s ease-out, background-color .3s step-end, color .3s step-end, z-index .3s step-end, position .3s step-end;
+  -o-transition: -o-transform .3s ease-out, background-color .3s step-end, color .3s step-end, z-index .3s step-end, position .3s step-end;
+  transition: transform .3s ease-out, background-color .3s step-end, color .3s step-end, z-index .3s step-end, position .3s step-end;*/
+}
+
+.embedded .toc-visible #reading-area {
+    left: 0%;
+}
+
+.embedded #readium-toc-body a {
+    color: white;
+}
+
+.embedded .toc-visible button.close {
+    color: transparent;
+    text-shadow: none;
+    position: fixed;
+    width: 16px;
+    background: url("../images/white-chevron-up.png") no-repeat;
+    background-size: 16px 11px;
+    left: 9px;
+    top: 5px;
+}
+
+/*.embedded .navbar-left{
+  float: left!important;
+}*/
+.embedded .navbar-right {
+    float: none !important;
+    clear: left;
+    width: 100%;
+}
+
+.embedded .btn-group {
+    display: block;
+}
+
+.embedded #annotations-highlight {
+    display: none;
+}
+
+button,
+input[type="radio"] + label,
+input[type="range"],
+input[type="text"] {
+    outline: 0 !important;
+}
+
+input[type="text"] {
+    -webkit-appearance: none !important;
+}
+
+body.keyboard button:focus,
+body.keyboard input[type="radio"]:focus + label,
+body.keyboard input[type="range"]:focus {
+    box-shadow: 0px 0px 5px #6fb5f1 !important;
+    outline: #6fb5f1 dotted 1px !important;
+}
+
+body.keyboard input[type="text"]:focus {
+    background: #fff;
+    box-shadow: 0px 0px 5px #6fb5f1 !important;
+    outline: #6fb5f1 dotted 1px !important;
+}
+
+body.keyboard #app-navbar button:focus,
+body.keyboard #app-navbar input[type="radio"]:focus + label,
+body.keyboard #app-navbar input[type="range"]:focus {
+    box-shadow: 0px 0px 5px #6fb5f1 !important;
+    outline: #6fb5f1 dotted 1px !important;
+}
+
+body.keyboard #app-navbar input[type="text"]:focus {
+    background: #fff;
+    box-shadow: 0px 0px 5px #6fb5f1 !important;
+    outline: #6fb5f1 dotted 1px !important;
+}
+
+input[type="range"] {
+    display: inline-block;
+    padding: 0;
+}
+
+/*
+#scroll-default-radio ~ label,
+#scroll-doc-radio ~ label,
+#scroll-continuous-radio ~ label,
+#spread-default-radio ~ label,
+#single-page-radio ~ label,
+#double-page-radio ~ label
+*/
+.underlinedLabel {
+    border-bottom: 2px solid transparent;
+}
+
+/*
+#scroll-default-radio:checked ~ label,
+#scroll-doc-radio:checked ~ label,
+#scroll-continuous-radio:checked ~ label,
+#spread-default-radio:checked ~ label,
+#single-page-radio:checked ~ label,
+#double-page-radio:checked ~ label
+*/
+input:checked ~ .underlinedLabel {
+    border-bottom: 2px solid #333333;
+}
+
+ul.nav-tabs li button {
+    padding: 0.7em !important;
+    margin: 0.2em !important;
+    margin-bottom: 0 !important;
+
+    font-weight: bold !important;
+    font-size: 110% !important;
+
+    background: none !important;
+
+    border: 0 !important;
+    border: 1px solid transparent !important;
+    border-bottom: 2px solid transparent !important;
+
+    color: #888888 !important;
+}
+
+ul.nav-tabs li.active button {
+    border: 1px solid silver !important;
+    border-bottom: 2px solid white !important;
+    border-radius: 0.5em !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+
+    color: black !important;
+}
+
+ul.nav-tabs li:not(.active) button:hover {
+    background: #dddddd !important;
+    color: #003366 !important;
+
+    border-radius: 0.5em !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+@media (max-device-width: 960px), (max-width: 960px) {
+    .navbar-left #webreaderTitle {
+        display: none !important;
+    }
+
+    .navbar {
+    }
+
+    .navbar .btn-group > .btn {
+        width: 24px;
+        height: 24px;
+        padding: 0;
+    }
+
+    #aboutButt1 img {
+        margin-right: initial !important;
+    }
+
+    #readerCurrentClassContainer,
+    .navbar .btn-group > .btn.icon-full-screen {
+        display: none !important;
+    }
+
+    #epub-reader-frame {
+        border-left: 30px solid transparent;
+        border-right: 30px solid transparent;
+    }
+
+    .page-switch-overlay-icon {
+        font-size: 30px;
+    }
+
+    #reading-area {
+        top: 25px;
+    }
+}
+
+.zoom-wrapper {
+    /* display: inline-block; */
+    display: none;
+    float: left;
+    padding: 6px 12px;
+}
+
+.zoom-wrapper input {
+    border: none;
+    width: 3em;
+    text-align: right;
+}
+
+.zoom-wrapper input[disabled] {
+    background-color: #4d4d4d;
+    color: #ddd;
+}
+
+.zoom-wrapper a {
+    color: #ddd;
+}
+
+#zoom-menu .glyphicon-ok {
+    display: none;
+}
+
+#zoom-menu .active-zoom .glyphicon-ok {
+    display: inline-block;
+}
+
+#clickOutOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4999;
+}
+
+#clickOutOverlay.opaque {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#annotationContextMenu {
+    position: fixed;
+    width: 250px;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 15px;
+    z-index: 5000;
+}
+
+#annotationContextMenu > .noteContainer {
+    padding: 10px;
+    border-top: 1px solid white;
+    width: 100%;
+    font-style: italic;
+}
+
+#annotationContextMenu > .annotationContextButtonWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    font-size: 0.8em;
+}
+
+#annotationContextMenu > .annotationContextButtonWrapper > div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#annotationContextMenu > .annotationContextButtonWrapper > div:not(:last-child) {
+    border-right: 1px solid white;
+}
+
+#annotationContextMenu > .annotationContextButtonWrapper > div:not(:first-child),
+#annotationContextMenu > .annotationContextButtonWrapper > div:not(:last-child) {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+div.annotation.pinned > div:first-child {
+    display: flex;
+    align-items: center;
+}
+
+.pinnedIcon {
+    display: none;
+}
+
+div.annotation.pinned .pinnedIcon {
+    display: block;
+    margin-right: 1em;
+}
+
+div.annotation.pinned > div:not(:first-child) {
+    margin-left: 2em;
+}
+
+#my-shared-annotations div.annotation,
+#my-annotations div.annotation,
+#general-shared-annotations div.annotation {
+    cursor: pointer;
+    padding: 0.5em 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#my-shared-annotations > div ~ .hideWhenSiblingPresent,
+#my-annotations > div ~ .hideWhenSiblingPresent,
+#general-shared-annotations > div ~ .hideWhenSiblingPresent,
+#bookmarks-body-list > div ~ .hideWhenSiblingPresent {
+    display: none;
+}
+
+.hideWhenOnlyChild:only-child {
+    display: none;
+}
+
+#general-shared-annotations div.annotation:hover,
+#my-annotations div.annotation:hover,
+#my-shared-annotations div.annotation:hover {
+    background-color: #eee;
+}
+
+#my-shared-annotations div.annotation > div:first-child > span {
+    padding: 0.25em;
+    background: #cbe1ff;
+}
+
+#my-shared-annotations div.annotation:hover > div:first-child > span {
+    background: #98c5ff;
+}
+
+#my-annotations div.annotation > div:first-child > span {
+    padding: 0.25em;
+    background: #ffffcb;
+}
+
+#my-annotations div.annotation:hover > div:first-child > span {
+    background: #ffff98;
+}
+
+#general-shared-annotations div.annotation > div:first-child > span {
+    padding: 0.25em;
+    background: #ffcbcb;
+}
+
+#general-shared-annotations div.annotation:hover > div:first-child > span {
+    background: #ff9898;
+}
+
+#my-shared-annotations div.annotation > div:last-child,
+#my-annotations div.annotation > div:last-child,
+#general-shared-annotations div.annotation > div:last-child {
+    padding-left: 0.5em;
+    border-left: 3px solid #ddd;
+}
+
+#readium-slider {
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    color: black;
+}
+
+.sliderContainer {
+    width: 80%;
+}
+
+.sliderContainer > input {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 5px;
+    background: gray;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+}
+
+.sliderContainer > input:hover {
+    opacity: 1;
+}
+
+.sliderContainer > input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #ec5353;
+    cursor: pointer;
+    border-radius: 20px;
+    position: relative;
+    top: -8px;
+}
+
+.sliderInfoContainer {
+    display: none;
+    position: absolute;
+    background: black;
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    top: -65px;
+}
+
+.sliderInfoContainer.visible {
+    display: flex;
+    flex-direction: column;
+}
+
+.sliderPageContainer {
+    margin-left: 10px;
+    opacity: 0.5;
+}
+
+.bookSliderLabel {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 0;
+    opacity: 0.5;
+    font-size: 10pt;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    /*  background: linear-gradient(to right, rgba(59,144,232,0) 20%, rgba(59,144,232,1) 20%, rgba(44,133,231,1) 50%, rgba(44,133,230,0) 50%)
+  background: rgba(73,155,234,0);
+background: -moz-linear-gradient(left, rgba(73,155,234,0) 0%, rgba(59,144,232,0) 34%, rgba(59,144,232,1) 35%, rgba(44,133,231,1) 70%, rgba(44,133,230,0) 71%, rgba(32,124,229,0) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(73,155,234,0)), color-stop(34%, rgba(59,144,232,0)), color-stop(35%, rgba(59,144,232,1)), color-stop(70%, rgba(44,133,231,1)), color-stop(71%, rgba(44,133,230,0)), color-stop(100%, rgba(32,124,229,0)));
+background: -webkit-linear-gradient(left, rgba(73,155,234,0) 0%, rgba(59,144,232,0) 34%, rgba(59,144,232,1) 35%, rgba(44,133,231,1) 70%, rgba(44,133,230,0) 71%, rgba(32,124,229,0) 100%);
+background: -o-linear-gradient(left, rgba(73,155,234,0) 0%, rgba(59,144,232,0) 34%, rgba(59,144,232,1) 35%, rgba(44,133,231,1) 70%, rgba(44,133,230,0) 71%, rgba(32,124,229,0) 100%);
+background: -ms-linear-gradient(left, rgba(73,155,234,0) 0%, rgba(59,144,232,0) 34%, rgba(59,144,232,1) 35%, rgba(44,133,231,1) 70%, rgba(44,133,230,0) 71%, rgba(32,124,229,0) 100%);
+background: linear-gradient(to right, rgba(73,155,234,0) 0%, rgba(59,144,232,0) 34%, rgba(59,144,232,1) 35%, rgba(44,133,231,1) 70%, rgba(44,133,230,0) 71%, rgba(32,124,229,0) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#207ce5', GradientType=1 );*/
+}
+
+.searchResult {
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.searchResult:hover {
+    background: #dedede;
+}

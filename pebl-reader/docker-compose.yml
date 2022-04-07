@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+
+  pebl-reader-nginx:
+    restart: always
+    build:
+      context: .
+      args:
+        - HOSTNAME=${HOSTNAME}
+    container_name: docker_reader
+    sysctls:
+      - net.core.somaxconn=4096
+    environment:
+      WS_SERVICES_ENDPOINT: "wss://${PEBL_SERVICES_HOST}"
+      HTTP_SERVICES_ENDPOINT: "https://${PEBL_SERVICES_HOST}"
+      USE_SERVICES_LOGIN: $USE_SERVICES_LOGIN
+      USE_GUEST_LOGIN: $USE_GUEST_LOGIN
+    volumes:
+      #- ./epub_content:/usr/share/nginx/html/epub_content
+      - ./_data/letsencrypt:/usr/share/nginx/html
+      - ./certbot/etc:/usr/share/keys
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - public
+
+  certbot:
+    image: certbot/certbot
+    container_name: 'docker_certbot'
+    volumes:
+      - ./keys:/var/lib/letsencrypt
+      - ./_data/letsencrypt:/data/letsencrypt
+      - ./certbot/etc:/etc/letsencrypt
+      - ./certbot/log:/var/log/letsencrypt
+    networks:
+      - public
+      
+networks:
+  public: 
+    driver: bridge

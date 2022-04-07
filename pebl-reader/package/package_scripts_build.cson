@@ -1,0 +1,249 @@
+
+#
+# See package.cson for more information
+#
+
+#=====================
+    clean: '
+
+        (yarn --version || echo noyarn)
+        &&
+        node --version
+        &&
+        npm --version
+        &&
+        npm run rimraf
+            build-output
+        &&
+        npm run rimraf
+            api-docs/*
+        &&
+        npm run rimraf
+            dist
+    '
+
+#=====================
+    apidocs: '
+
+        npm run yuidocjs
+    '
+
+#=====================
+    pack: '
+
+        ./pack.sh
+    '
+
+#=====================
+    minify: '
+
+        node terser.js
+    '
+
+
+#=====================
+    'prebuild': '
+
+        npm run clean
+    '
+
+#=====================
+    build: '
+
+        npm run
+            build:scripts
+    '
+# build:styles
+# may be needed in a future version of Readium that uses SASS (or other) instead of pure CSS
+
+#=====================
+    lint: '
+
+        npm run jshint
+            "src/js/**.js"
+    '
+
+
+#=====================
+    'preversioning': '
+
+        npm run mkdirp
+            build-output
+    '
+
+#=====================
+    'versioning': '
+
+        node build-config/versioning.js build-output/version.json
+    '
+
+#=====================
+    'genPluginsConfig': '
+
+        cd readium-js/readium-shared-js/
+        &&
+        node readium-build-tools/pluginsConfigMaker.js
+        &&
+        cd ../..
+    '
+
+#=====================
+    'prebuild:scripts': '
+
+       npm run genPluginsConfig
+    '
+
+#=====================
+    'build:scripts': '
+
+        npm run versioning
+	&&
+        npm run
+            build:scripts:multiple
+        &&
+        npm run
+            build:scripts:single
+	&&
+        npm run
+            build:scripts:single:CLOUDAPPWORKER
+            --readium-js-viewer:RJS_UGLY=no	    
+    '
+
+#=====================
+    'build:scripts:single': '
+
+        npm run rjs
+             --rjs_bundle=single
+    '
+
+#=====================
+    'build:scripts:single:CLOUDAPPWORKER': '
+
+        npm run rjs
+             --rjs_bundle=single
+             --rjs_configOverrideTarget=_CLOUDAPP-WORKER
+    '
+
+#=====================
+    'prebuild:scripts:multiple': '
+
+        npm run mkdirp
+            build-output/XXX
+        &&
+        npm run ncp
+            src/templates/
+            build-output/XXX/templates/
+        &&
+        npm run ncp
+            src/i18n/
+            build-output/XXX/i18n/
+        &&
+        npm run cpy
+            build-output/version.json
+            build-output/XXX/
+    '
+
+#=====================
+    'build:scripts:multiple': '
+
+        npm run rjs
+             --rjs_bundle=multiple
+    '
+
+#=====================
+    'postbuild:scripts:multiple': '
+
+        npm run rimraf
+            build-output/XXX
+        &&
+        npm run rimraf
+            build-output/_multiple-bundles/version.json
+        &&
+        npm run rimraf
+            build-output/_multiple-bundles/templates
+        &&
+        npm run rimraf
+            build-output/_multiple-bundles/i18n
+        &&
+        npm run rimraf
+            build-output/_multiple-bundles/migration
+        &&
+        npm run rimraf
+            build-output/_multiple-bundles/storage
+        &&
+        npm run rimraf
+            build-output/_multiple-bundles/versioning
+        &&
+        npm run rimraf
+            build-output/_multiple-bundles/workers
+        &&
+        npm run rimraf
+            build-output/_multiple-bundles/mathjax
+
+
+        &&
+        npm run cpy
+            build-output/_multiple-bundles/z-worker.js
+            build-output/
+        &&
+        npm run cpy
+            build-output/_multiple-bundles/deflate.js
+            build-output/
+        &&
+        npm run cpy
+            build-output/_multiple-bundles/inflate.js
+            build-output/
+
+        &&
+        npm run rimraf
+            build-output/_multiple-bundles/z-worker.js
+        &&
+        npm run rimraf
+            build-output/_multiple-bundles/deflate.js
+        &&
+        npm run rimraf
+            build-output/_multiple-bundles/inflate.js
+
+
+
+        &&
+        (
+        npm run cpy
+            build-output/_multiple-bundles/z-worker.js.map
+            build-output/
+        &&
+        (
+        npm run cpy
+            build-output/_multiple-bundles/deflate.js.map
+            build-output/
+        &&
+        npm run cpy
+            build-output/_multiple-bundles/inflate.js.map
+            build-output/
+            
+        &&
+        npm run rimraf
+            build-output/_multiple-bundles/z-worker.js.map
+        &&
+        npm run rimraf
+            build-output/_multiple-bundles/deflate.js.map
+        &&
+        npm run rimraf
+            build-output/_multiple-bundles/inflate.js.map
+        )
+        || echo "=== SUCCESS [ignore previous error]: no sourcemaps were generated for zip web-worker, deflate, inflate (no uglification)."
+        )
+
+        &&
+        npm run rimraf
+            build-output/_multiple-bundles/RequireJS.js.src.js
+        &&
+        npm run rimraf
+            build-output/_multiple-bundles/inflate.js.src.js
+        &&
+        npm run rimraf
+            build-output/_multiple-bundles/deflate.js.src.js
+        &&
+        npm run rimraf
+            build-output/_multiple-bundles/z-worker.js.src.js
+    '

@@ -1,0 +1,89 @@
+<div class="col-xs-4 col-sm-3 col-md-2 library-item {{epub.libraryState}}" id="{{epub.id}}">
+    <div class='info-wrap'>
+        <!-- <div class='caption book-info'>
+            <h4 class='title'>{{ epub.title }}</h4>
+            <div class='author'>{{ epub.author}}{{^epub.author}}No Author Listed{{/epub.author}}</div>
+        </div> -->
+
+        <button type="button" style="background: none; border: none; padding: 0; margin: 0;" class="read"
+
+        data-id="{{epub.id}}"
+
+        data-title="{{epub.title}}"
+        
+        {{#epub.isSubLibraryLink}}
+        
+        data-library="{{epub.rootUrl}}"
+        
+        {{/epub.isSubLibraryLink}}
+
+        {{^epub.isSubLibraryLink}}
+            
+            {{#epub.isExternalLink}}
+            
+            data-link="{{epub.rootUrl}}"
+            
+            {{/epub.isExternalLink}}
+    
+            {{^epub.isExternalLink}}
+            
+            data-book="{{epub.rootUrl}}"
+            
+            {{/epub.isExternalLink}}
+        
+        {{/epub.isSubLibraryLink}}
+        
+        aria-label="({{count.n}}) {{epub.title}}" title="({{count.n}}) {{epub.title}}"  tabindex="0">
+
+        {{#epub.coverHref}}
+        <div aria-hidden="true" class="no-cover has-cover" style="background-image:url({{ coverHref }});"><p>&nbsp;</p></div>
+        {{/epub.coverHref}}
+
+        {{^epub.coverHref}}
+        <div aria-hidden="true" class="no-cover" style="background-image: url('{{noCoverBackground}}')"><p>{{epub.title}}</p></div>
+        {{/epub.coverHref}}
+    </button>
+    </div>
+
+    <!-- <div class="caption buttons">
+        <a href="#" class="btn btn-default read" data-book="{{epub.packageUrl}}" role="button">{{strings.i18n_read}}</a>
+        <a href="#details-modal" data-book="{{epub.packageUrl}}" aria-pressed="true" class="btn btn-default details" data-toggle="modal" role="button">{{strings.i18n_details}}</a>
+    </div> -->
+    <div class='caption book-info'>
+        <h4 class='title' title="{{epub.title}}">{{epub.title}}</h4>
+        <div class='author' title="{{epub.author}}">{{epub.author}}{{^epub.author}}No Author Listed{{/epub.author}}</div>
+
+        {{^epub.isSubLibraryLink}}
+            
+            {{^epub.isExternalLink}}
+
+                {{#epub.packagePath}}
+                    
+                    <div class="buttons">
+            
+                        <button disabled {{^epub.coverHref}} data-no-cover="{{noCoverBackground}}" {{/epub.coverHref}} class="btn">Available</button>
+                    
+                    </div>
+
+                {{/epub.packagePath}}
+
+                {{^epub.packagePath}}
+
+                    <div class="button">
+                        <button aria-label="{{strings.i1n_download_book}} ({{count.n}}) {{epub.title}}" title="{{strings.i18n_download_book}} ({{count.n}}) {{epub.title}}" tabindex="0" data-root="{{epub.rootUrl}}" data-title="{{epub.title}}" class="btn download-book-button">{{strings.i18n_download_book}}</button>
+                    </div>
+
+                {{/epub.packagePath}}
+
+                <div class="buttons">
+        
+                    <button data-id="{{epub.id}}" aria-label="{{strings.i18n_delete_book}} ({{count.n}}) {{epub.title}}" title="{{strings.i18n_delete_book}} ({{count.n}}) {{epub.title}}" tabindex="{{count.tabindex}}" data-package="{{epub.rootUrl}}/{{epub.packagePath}}" data-root="{{epub.rootUrl}}" data-root-dir="{{epub.rootDir}}" {{^epub.coverHref}} data-no-cover="{{noCoverBackground}}" {{/epub.coverHref}} class="btn delete-book-button">{{strings.i18n_delete_book}}</button>
+                    
+                </div>
+    
+                
+            {{/epub.isExternalLink}}
+        
+        {{/epub.isSubLibraryLink}}
+    </div>
+</div>

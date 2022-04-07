@@ -1,0 +1,35 @@
+version: '3'
+services:
+
+  nginx:
+    restart: always
+    build:
+      context: nginx
+      args:
+        - HOSTNAME=${HOSTNAME}
+    ports:
+      - 80:80
+      - 443:443
+    container_name: docker_nginx
+    volumes:
+      - ./nginx/letsencrypt:/usr/share/nginx/html
+      - ./etc:/usr/share/keys
+    networks:
+      - public
+
+  certbot:
+    container_name: 'docker_certbot'
+    image: certbot/certbot
+    volumes:
+      - ./keys:/var/lib/letsencrypt
+      - ./nginx/letsencrypt:/data/letsencrypt
+      - ./etc:/etc/letsencrypt
+      - ./log:/var/log/letsencrypt
+    networks:
+      - public
+    depends_on:
+      - nginx
+      
+networks:
+  public: 
+    driver: bridge

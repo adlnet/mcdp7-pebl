@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="google-site-verification" content="viy9G5ltZp2BNyGobWevcRefx2Xi-BxIBUNRD6maJX4" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=2.0">
+
+        <link rel="manifest" href="manifest.json" />
+
+        <link id="readerFavicon" href="" rel="shortcut icon"/>
+        <link id="appleTouchIcon" href="images/PEBL-icon-144.png" rel="apple-touch-icon"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="PeBL eReader">
+        <meta name="theme-color" content="#fff">
+
+        <meta id="msapplicationTileImage" name="msapplication-TileImage" content="images/PEBL-icon-144.png">
+        <meta name="msapplication-TileColor" content="#000000">
+
+        <style>
+         .library-item{
+             height: 100px;
+
+         }
+
+         body:not(.list-view) .library-item .no-cover{
+             width: 300px;
+             height: 400px;
+             font-size: 40px;
+         }
+        </style>
+
+        <link rel="stylesheet" type="text/css" href="css/annotations.css" async>
+        <link rel="stylesheet" type="text/css" href="css/all.min.css" async>
+        <link rel="stylesheet" type="text/css" href="css/readium-all.css" async>
+        <link rel="stylesheet" type="text/css" href="css/pebl-login-widget.css" async>
+    </head>
+
+    <body>
+        <noscript>Javascript is required to view this site, please enable Javascript and reload the page.</noscript>
+        <a class="skip-main" href="#app-container" onclick="skipToMainContent(event);" >Skip to main content</a>
+        <nav id="app-navbar" class="navbar" role="navigation" aria-label="{{Strings.i18n_toolbar}}">
+        </nav>
+
+        <main id="app-container" role="main" tabindex="0" aria-labelledby="webreaderTitle"  >
+            <Label>Reader is being downloaded, please wait...</label>
+            <Label>After the initial download, you should not have this delay again.</label>
+        </main>
+
+        <script type="text/javascript">
+            if (window.navigator.userAgent.indexOf('MSIE ') > 0 || window.navigator.userAgent.indexOf('Trident/') > 0) {
+                var container = document.getElementById('app-container');
+                container.innerHTML = '';
+
+                var msg1 = document.createElement('h1');
+                msg1.textContent = 'Internet Explorer is not supported.';
+                msg1.setAttribute('style', 'text-align: center;');
+
+                var msg2 = document.createElement('h1');
+                msg2.textContent = 'Consider using Microsoft Edge or Google Chrome.';
+                msg2.setAttribute('style', 'text-align: center;');
+
+                container.appendChild(msg1);
+                container.appendChild(msg2);
+            }
+        </script>
+
+        <script type="text/javascript" src="scripts/config.js?v=0.1"></script>
+        <script type="text/javascript" src="scripts/pack.js?v=0.1"></script>
+
+        <script type="text/javascript">
+         if (navigator.serviceWorker) {
+             navigator.serviceWorker.register('peblSW.js').then((reg) => {
+                 console.log("Service worker registered", reg.scope);
+                 hookSWWorkerApi(reg);
+             }).catch(function (err) {
+                 console.error("Bad service worker", err);
+             });
+         }
+
+         document.getElementById('readerFavicon').setAttribute('href', window.PeBLConfig.favicon);
+         if (window.PeBLConfig.appleTouchIcon)
+            document.getElementById('appleTouchIcon').setAttribute('href', window.PeBLConfig.appleTouchIcon);
+        if (window.PeBLConfig.msapplicationTileImage)
+            document.getElementById('msapplicationTileImage').setAttribute('content', window.PeBLConfig.msapplicationTileImage);
+
+         var path = (window.location && window.location.pathname) ? window.location.pathname : '';
+
+         // extracts path to index.html (or more generally: /PATH/TO/*.[x]html)
+         path = path.replace(/(.*)\/.*\.[x]?html$/, "$1");
+
+         // removes trailing slash
+         path = path.charAt(path.length-1) == '/'
+              ? path.substr(0, path.length-1)
+              : path;
+
+         var HTTPServerRootFolder =
+             window.location ? (
+                 window.location.protocol
+                 + "//"
+                 + window.location.hostname
+                 + (window.location.port ? (':' + window.location.port) : '')
+                 + path
+             ) : ''
+         ;
+         //  console.log(HTTPServerRootFolder);
+         
+         var skipToMainContent = function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            var libraryMain = document.getElementById('library-body');
+            var bookMain = document.getElementById('reading-area');
+            if (libraryMain != null) {
+                //window.location.href = '#library-body';
+                libraryMain.focus();
+            } else {
+                //window.location.href = '#reading-area';
+                bookMain.focus();
+            }
+         }
+
+         var getURLQueryParams = function() {
+             var params = {};
+
+             var query = window.location.search;
+             if (query && query.length) {
+                 query = query.substring(1);
+                 var keyParams = query.split('&');
+                 for (var x = 0; x < keyParams.length; x++)
+                 {
+                     var keyVal = keyParams[x].split('=');
+                     if (keyVal.length > 1) {
+                         params[keyVal[0]] = decodeURIComponent(keyVal[1]);
+                     }
+                 }
+             }
+
+             return params;
+         };
+
+         var urlParams = getURLQueryParams();
+         console.log(urlParams);
+
+         // MUST BE *SINGLE* CALL TO require.config() FOR ALMOND (SINGLE BUNDLE) TO WORK CORRECTLY!!!
+         require.config({
+             /* http://requirejs.org/docs/api.html#config-waitSeconds */
+             waitSeconds: 0,
+
+             config : {
+
+                 'readium_js_viewer/ModuleConfig' : {
+
+                     'mathJaxUrl': HTTPServerRootFolder + '/scripts/mathjax/MathJax.js',
+
+                     'fonts': [],
+
+                     'annotationCSSUrl': HTTPServerRootFolder + '/css/annotations.css',
+
+                     'jsLibRoot': HTTPServerRootFolder + '/scripts/zip/',
+
+                     'useSimpleLoader' : false, // cloud reader (strictly-speaking, this config option is false by default, but we prefer to have it explicitly set here).
+
+                     'epubLibraryPath': urlParams['epubs'] ? urlParams['epubs'] : "epub_content/epub_library.json",// "epub_library.json", // defaults to /epub_content/epub_library.json relative to the application's root index.html
+
+                     'imagePathPrefix': undefined,
+
+                     'canHandleUrl' : false,
+                     'canHandleDirectory' : false,
+
+                     'workerUrl': 'scripts/readium-js-viewer_CLOUDAPP-WORKER.js',
+                     'epubReadingSystemUrl': undefined
+                 }
+             }
+         });
+
+        </script>
+    </body>
+
+</html>

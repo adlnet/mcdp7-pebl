@@ -1,0 +1,55 @@
+<div id="library-body" class="library-body" role="main" aria-labelledby="library-title"  tabindex="0">
+	<h1 id="library-title" class="library-row-title">Bookshelf</h1>
+	<div class="row library-items cloud-library">
+
+	</div>
+</div>
+
+<div id="adminSidebar" class="is-collapsed" role="nav" aria-labelledby="adminSidebarTitle"  tabindex="-1">
+    <div class="adminSidebar_toolWrapper">
+        <h2 id="adminSidebarTitle" class="adminSidebar_title"><i class="show-on-collapse fas fa-chalkboard-teacher"></i><span class="hide-on-collapse">Instructor Panel</span></h2>
+        <button id="adminSidebarLibraryButton" class="button adminSidebar-button is-active" aria-label="bookshelf" title="Bookshelf" tabindex="0"><i class="fas fa-book"></i> <span class="hide-on-collapse">Bookshelf</span></button>
+        <!-- <button class="button adminSidebar-button"><i class="fas fa-comments"></i> <span class="hide-on-collapse">Discussions</span></button> -->
+        <button id="adminSidebarAnalyticsButton" class="button adminSidebar-button" aria-label="analytics" title="Analytics" tabindex="0"><i class="fas fa-chart-bar"></i> <span class="hide-on-collapse">Analytics</span></button>
+    </div>
+    <div class="adminSidebar_footer">
+        <button id="adminSidebarToggleButton" class="button adminSidebar-button" aria-label="collapse sidebar" tabindex="0"><i class="fas fa-caret-square-left hide-on-collapse"></i><i class="fas fa-caret-square-right show-on-collapse"></i> <span class="hide-on-collapse">Collapse Sidebar</span></button>
+    </div>
+</div>
+
+<div id="analytics-body" style="display: none;" aria-labelledby="analytics-title" role="complementary" tabindex="-1">
+	<h1 id="analytics-title">Analytics</h1>
+
+	<select id="analytics-book-title"></select>
+
+	<div id="analytics-content" style="display: none;">
+
+		<h3>Percentage of Book Completion</h3>
+
+		<div id="percentageCompletionContainer"></div>
+
+		<div id="questionCountsContainer">
+			<div>
+				<h3>Most Participated-in Discussions</h3>
+				<div id="mostAnsweredQuestionCountsContainer"></div>
+			</div>
+		</div>
+
+		<div>
+			<h3>Most Answered Multiple Choice Answers</h3>
+			<div id="quizChartContainer"></div>
+		</div>
+
+		<div id="reportedMessagesContainer">
+			<div>
+				<h3>Reported Submissions</h3>
+				<div id="reportedMessagesCountsContainer"></div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+<div id="search-library-body" class="sidebar-body" aria-label="{{strings.search}}" role="search" tabindex="-1"></div>
+

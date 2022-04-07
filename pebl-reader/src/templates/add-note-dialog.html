@@ -1,0 +1,23 @@
+<div class="modal fade" id="add-note-dialog" tabindex="-1" role="dialog" aria-labelledby="add-note-label">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button id="clodeAddNoteCross" type="button" class="close" data-dismiss="modal" tabindex="0" title="{{strings.i18n_close}} {{strings.i18n_add_note}}" aria-label="{{strings.i18n_close}} {{strings.i18n_add_note}}"><span aria-hidden="true">&times;</span></button>
+
+                <h2 class="modal-title" id="add-note-label">{{strings.i18n_add_note}}</h2>
+            </div>
+            <div class="modal-body">
+                <div class="annotationInputContainer">
+                    <label for="annotationInput">{{strings.i18n_add_note}}</label>
+                    <textarea type="text" placeholder="Add a note for this highlight" id="annotationInput" tabindex="0"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="add-note-submit" tabindex="0" type="button" class="btn btn-primary" data-dismiss="modal">Add Note</button>
+            </div>
+        </div>
+        <!-- /.modal-content --> 
+    </div><!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

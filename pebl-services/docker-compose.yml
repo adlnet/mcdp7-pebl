@@ -1,0 +1,72 @@
+version: '3'
+
+services:
+
+  pebl-services:
+    build:
+      context: .
+    container_name: docker_services
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+    environment:
+      SERVER_NAME: $SERVER_NAME
+      CONSUMING_DOMAINS: "*"
+      AUTH_PROVIDER_URL: https://${AUTH_DOMAIN}/realms/${AUTH_REALM}
+      AUTH_CLIENT_SECRET: $AUTH_CLIENT_SECRET
+      AUTH_CLIENT_ID: $AUTH_CLIENT_ID
+      SERVER_AUTH_REDIRECT_URL: "https://${SERVER_NAME}/redirect"
+      AUTH_RESPONSE_TYPES: code
+      AUTH_SCOPE: openid email profile
+      POSTGRES_SQL_URL: "postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@pg:5432/${POSTGRES_DB}"
+      AUTH_METHOD: openid
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_AUTH: $REDIS_AUTH
+      SESSION_SECRET: $SESSION_SECRET
+      SERVER_PORT: $SERVICE_PORT
+      USE_SSL: "true"
+      LRS_URL: $LRS_URL
+      LRS_BASIC_AUTH: $LRS_BASIC_AUTH
+    volumes:
+      - "./certbot/etc/live/${SERVER_NAME}/privkey.pem:/ssl/privkey.pem:ro"
+      - "./certbot/etc/live/${SERVER_NAME}/fullchain.pem:/ssl/fullchain.pem:ro"
+    networks:
+      - public
+
+  redis:
+    build:
+      context: redis
+    restart: always
+    environment:
+      REDIS_AUTH: $REDIS_AUTH
+    sysctls:
+      net.core.somaxconn: 512
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - ./_data/redis:/var/lib/redis/
+    networks:
+      - public
+
+  pg:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_DB: $POSTGRES_DB
+      POSTGRES_HOST_AUTH_METHOD: scram-sha-256
+      POSTGRES_INITDB_ARGS: --auth-local=scram-sha-256
+    shm_size: "256M"
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - ./_data/pg:/var/lib/postgresql/data
+    networks:
+      - public
+
+networks:
+  public: 
+    driver: bridge

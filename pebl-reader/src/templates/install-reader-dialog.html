@@ -1,0 +1,20 @@
+<div class="modal fade" id="install-reader-dialog" tabindex="-1" role="dialog" aria-labelledby="install-reader-label">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button id="closeInstallReadercross" type="button" class="close" data-dismiss="modal" tabindex="0" title="{{strings.i18n_close}} {{strings.i18n_install_reader}}" aria-label="{{strings.i18n_close}} {{strings.i18n_install_reader}}"><span aria-hidden="true">&times;</span></button>
+
+                <h2 class="modal-title" id="install-reader-label">Download finished</h2>
+            </div>
+            <div class="modal-body">
+                <p><span id="downloaded-book-title">Interactive E-Book</span> has been added to your web bookshelf.</p>
+                {{^hideInstallInstructions}}
+                <p>To add this to your desktop for extended offline use, see <a target="_blank" href="install-reader.html?install={{param}}">these instructions</a>.</p>
+                {{/hideInstallInstructions}}
+            </div>
+        </div>
+        <!-- /.modal-content --> 
+    </div><!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

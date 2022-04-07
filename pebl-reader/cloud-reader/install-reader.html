@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+
+    <body style="margin: 0; overflow: hidden;">
+        <iframe id="installGuideFrame" src="https://peblproject.org/install-reader.html" width="100%" style="height: 100vh; border: none;"></iframe>
+    </body>
+
+    <script type="text/javascript">
+        var params = new URLSearchParams(window.location.search);
+        if (params.has('install')) {
+            document.getElementById('installGuideFrame').setAttribute('src', 'https://peblproject.org/install-reader.html?install=' + params.get('install'));
+        }
+    </script>
+
+</html>

@@ -1,0 +1,42 @@
+<header id="app-header" class="btn-group navbar-left">
+    <!-- <button type="button" class="btn btn-default icon icon-show-hide"></button>  -->
+    <button id="aboutButt1" tabindex="0" type="button" class="btn" aria-label="{{strings.view_library}}">
+          <img style="margin-right: 1em;width: auto;height: 26px;" src="{{strings.i18n_pebl_webreader_logo}}" alt="PeBL Logo"/>
+    </button>
+    <h1 id="webreaderTitle">{{strings.i18n_pebl_title}}</h1>
+</header>
+
+<div class="btn-group navbar-right">
+    <!-- <button tabindex="1" type="button" class="btn icon-shareUrl" aria-label="{{strings.share_url}}"> -->
+    <!--     <span class="glyphicon glyphicon-link" aria-hidden="true"></span> -->
+    <!-- </button> -->
+    <!-- <button id="searchButt" tabindex="1" type="button" class="btn icon-search" aria-label="{{strings.search}}">
+        <img src="images/pebl-icons-search.svg" aria-hidden="true" height="18px" />
+    </button> -->
+    <button tabindex="0" type="button" class="btn icon-thumbnails" aria-label="{{strings.thumbnail_view}}">
+        <img src="images/pebl-icons-wip_grid-view.svg" aria-hidden="true" height="18px" />
+    </button>
+    <button tabindex="0" type="button" class="btn icon-list-view" aria-label="{{strings.list_view}}">
+            <img src="images/pebl-icons-wip_list-view.svg" aria-hidden="true" height="18px" />
+        </button>
+    <button id="addbutt" tabindex="0" type="button" class="btn " aria-label="{{strings.i18n_add_book}}" data-toggle="modal" data-target="#add-epub-dialog">
+            <img src="images/pebl-icons-wip_new-book.svg" aria-hidden="true" height="18px" />
+        </button>
+    <button id="settbutt1" tabindex="0" type="button" class="btn " aria-label="{{strings.settings}}" data-toggle="modal" data-target="#settings-dialog">
+        <img src="images/pebl-icons-wip_settings.svg" aria-hidden="true" height="18px" />
+    </button>
+<!--     <button style="display: none;" id="installbutt" tabindex="1" type="button" class="btn icon-install" aria-label="{{strings.install}}">
+        <img src="images/pebl-icons-wip_download.svg" aria-hidden="true" height="18px" />
+    </button> -->
+
+<!--     <button id="installbutt2" tabindex="1" type="button" class="btn " aria-label="{{strings.install}}">
+        <img src="images/pebl-icons-wip_download.svg" aria-hidden="true" height="18px" />
+    </button>
+ -->
+    <div tabindex="0" role="button" id="readerCurrentClassContainer" style="width: auto; display: none;" class="btn">
+        <span id="readerCurrentClass"></span>
+    </div>
+    <button id="loginButt" tabindex="0" type="button" class="btn " aria-label="{{strings.i18n_log_in}}">
+        <img src="images/pebl-icons-wip_login.svg" aria-hidden="true" height="18px" />
+    </button>
+</div>

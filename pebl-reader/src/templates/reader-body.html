@@ -1,0 +1,37 @@
+<div id="reading-area" role="main" tabindex="0" aria-label="reading area">  
+  <div id="epub-reader-container">
+    <div id="epub-reader-frame">
+    </div>
+  </div>
+  
+  <div id="readium-page-btns" role="navigation">
+    <!-- page left/right buttons inserted here when EPUB is loaded (page progression direction) -->
+  </div>
+
+  <div id="readium-slider" title="Book Slider" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-orientation="horizontal"></div>
+  
+</div>
+
+<div id="readium-toc-body" class="sidebar-body" aria-label="{{strings.toc}}" role="nav" tabindex="-1"></div>
+
+<div id="annotations-body" class="sidebar-body" role="complementary" aria-labelledby="annotationsLabel" tabindex="-1">
+  <h2 id="annotationsLabel">Highlights and Annotations</h2>
+	<h3><img src="images/pebl-icons-wip_highlight-list.svg" aria-hidden="true" height="18px"> My Private Annotations</h3>
+  <button id="downloadAnnotationsButton">Download notes and annotations</button>
+	<div id="my-annotations"></div>
+  {{^disabledFeatures.sharedAnnotations}}
+	<h3><img src="images/pebl-icons-wip_highlight-list.svg" aria-hidden="true" height="18px"> My Shared Annotations</h3>
+	<div id="my-shared-annotations"></div>
+	<h3><img src="images/pebl-icons-wip_highlight-list.svg" aria-hidden="true" height="18px"> Shared with Me</h3>
+  <button id="hideSharedAnnotationsButton">Hide shared annotations</button>
+	<div id="general-shared-annotations"></div>
+  {{/disabledFeatures.sharedAnnotations}}
+</div>
+
+<div id="bookmarks-body"class="sidebar-body" aria-label="{{strings.bookmarks}}" role="complementary" tabindex="-1"></div>
+
+<div id="search-body" class="sidebar-body" aria-label="{{strings.search}}" role="complementary" tabindex="-1"></div>
+
+
+
+<select aria-label="IOS Keyboard Clear Input" aria-hidden="true" style="display: none; position: absolute; top: -100vh;" id="iosKeyboardClearInput"></select>

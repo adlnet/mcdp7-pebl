@@ -1,0 +1,6 @@
+{
+    "i18n_pebl_library" : { "message" : "__PEBL_LIBRARY_TITLE__" },
+    "i18n_pebl_reader" : { "message" : "__PEBL_READER_TITLE__" },
+    "i18n_pebl_title" : { "message" : "__PEBL_TITLE__" },
+    "i18n_pebl_webreader_logo": { "message": "__PEBL_WEBREADER_LOGO__" }
+}

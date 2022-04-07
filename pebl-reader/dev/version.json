@@ -1,0 +1,17 @@
+{
+  "needsPopulating": true,
+  "repos": [
+    {
+      "name": "readiumJsViewer",
+      "path": ".."
+    },
+    {
+      "name": "readiumJs",
+      "path": "../readium-js"
+    },
+    {
+      "name": "readiumSharedJs",
+      "path": "../readium-js/readium-shared-js"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+    "serverName": "__SERVER_NAME__",
+
+    "validRedirectDomains": ["__CONSUMING_DOMAINS__"],
+
+    "privateKeyPath": "__TLS_PRIVATE_KEY_PATH__",
+    "certificatePath": "__TLS_CERTIFICATE_PATH__",
+
+    "version": "VERSION",
+
+    "authenticationUrl": "__AUTH_PROVIDER_URL__",
+    "authenticationClientSecret": "__AUTH_CLIENT_SECRET__",
+    "authenticationClientId": "__AUTH_CLIENT_ID__",
+    "authenticationRedirectURIs": ["__SERVER_AUTH_REDIRECT_URL__"],
+    "authenticationResponseTypes": ["__AUTH_RESPONSE_TYPES__"],
+    "authenticationScope": ["__AUTH_SCOPE__"],
+
+    "sqlConnectionString": "__POSTGRES_SQL_URL__",
+
+    "authenticationMethod": "__AUTH_METHOD__",
+
+    "redisHost": "__REDIS_HOST__",
+    "redisPort": __REDIS_PORT__,
+    "redisAuth": "__REDIS_AUTH__",
+
+    "sessionSecret": "__SESSION_SECRET__",
+    "sessionTTL": 3600,
+
+    "cookieSameSite": "none",
+
+    "logFileDirectory": "__LOGGING_DIRECTORY__",
+    "logFileSizeLimit": "10MB",
+    "logFileRotation": 7,
+
+    "debugging": false,
+    "usingSyslogFormat": false,
+
+    "port": __SERVER_PORT__,
+    "useSSL": __USE_SSL__,
+    "usesProxy": __USE_PROXY__,
+    "lrsUrl": "__LRS_URL__",
+    "lrsHeaders": {
+    	"X-Experience-API-Version": "1.0.3",
+    	"Authorization": "Basic __LRS_BASIC_AUTH__"
+    },
+    
+    "epubTempUploadPath": "__EPUB_TEMP_UPLOAD_PATH__",
+    "publishingServiceUrl": "__PUBLISHING_SERVICE_URL__",
+    "publishingServiceSecret": "__PUBLISHING_SERVICE_SECRET__"
+}

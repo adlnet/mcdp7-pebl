@@ -1,0 +1,9 @@
+[
+    {
+        "title":"MCDP-7 Interactive E-Book",
+        "author":"Eduworks",
+        "coverHref": "epub_content/mcdp-7/cover.jpg",
+        "rootUrl":"epub_content/mcdp-7/mcdp-7-1.1.7.epub",
+        "id": "urn:uuid:0d36d173-ec78-497d-ab20-4dac3d13b85e"
+    }
+]

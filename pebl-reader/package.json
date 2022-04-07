@@ -1,0 +1,110 @@
+{
+  "/*": "----------------------------------------------------------------------------",
+  "..": "This package.json (JSON) is automatically generated from package/*.cson (CSON)",
+  ".-": "DO NOT invoke 'npm init' or 'npm install --save' ('--save-dev' / '--save-optional')",
+  "._": "as this would overwrite / update the JSON, not the master CSON!",
+  "*/": "----------------------------------------------------------------------------",
+  "name": "readium-js-viewer",
+  "version": "0.31.1",
+  "engines": {
+    "node": ">=4",
+    "npm": ">=2",
+    "yarn": ">=0.23"
+  },
+  "description": "Readium web app - online cloud reader, offline Chrome extension/app",
+  "keywords": [
+    "readium",
+    "epub",
+    "epub3"
+  ],
+  "author": {
+    "name": "Readium (Daniel Weck)",
+    "email": "daniel.weck@gmail.com",
+    "url": "http://github.com/readium"
+  },
+  "license": "BSD-3-Clause",
+  "licenses": [
+    {
+      "type": "BSD-3-Clause",
+      "url": "http://opensource.org/licenses/BSD-3-Clause"
+    }
+  ],
+  "homepage": "http://github.com/readium/readium-js-viewer",
+  "bugs": {
+    "url": "http://github.com/readium/readium-js-viewer/issues",
+    "email": "daniel.weck@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/readium/readium-js-viewer.git"
+  },
+  "files": [
+    "build-output/",
+    "dev/",
+    "dist/",
+    "license.txt",
+    "README.md"
+  ],
+  "devDependencies": {
+    "concurrently": "^3.6.0",
+    "npm-run-all": "^4.1.3",
+    "jath": "github:danielweck/jath#master",
+    "mathjax-single-file": "github:danielweck/MathJax-single-file#master",
+    "bootstrap": "3.x",
+    "bootstrap-accessibility-plugin": "github:paypal/bootstrap-accessibility-plugin#master",
+    "screenfull": "^3.3.2",
+    "JSON2": "^0.1.0",
+    "hogan": "^1.0.2",
+    "requirejs-hogan-plugin": "^0.3.1",
+    "remotestoragejs": "^1.0.3",
+    "spin.js": "2.x",
+    "gift": "^0.10.1",
+    "clean-css-cli": "^4.1.10",
+    "terser": "^4.8.0",
+    "wd": "^1.9.0",
+    "github": "12.x",
+    "hogan.js": "^3.0.2",
+    "httpreq": "^0.4.24",
+    "xml2js": "^0.4.19",
+    "decompress-zip": "^0.3.1"
+  },
+  "scripts": {
+    "cson2json": "node ./readium-js/readium-shared-js/readium-build-tools/concat.js \"package/*.cson\" package.cson && node ./readium-js/readium-shared-js/node_modules/cson/bin/cson2json package.cson > package.json && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js package.cson && node readium-js/readium-shared-js/readium-build-tools/optimizePackageJsonScripts.js",
+    "prepare:all": "npm run prepare:submodule && npm run prepare:local",
+    "prepare:local": "(npm outdated || echo outdated) && (npm ci || npm install) && npm run prepare:local:common",
+    "prepare:yarn:all": "yarn run prepare:yarn:submodule && yarn run prepare:yarn:local",
+    "prepare:yarn:local": "(yarn outdated || echo outdated) && yarn install && yarn run prepare:local:common",
+    "prepare:local:common": "node readium-js/readium-shared-js/readium-build-tools/gitHubForksUpdater.js",
+    "prepare:submodule": "cd readium-js && npm run prepare:all && cd .. && ls",
+    "prepare:yarn:submodule": "cd readium-js && yarn run prepare:yarn:all && cd .. && ls",
+    "clean": "(yarn --version || echo noyarn) && node --version && npm --version && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js api-docs/* && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js dist",
+    "apidocs": "node ./readium-js/readium-shared-js/node_modules/yuidocjs/lib/cli.js -N -C -c yuidocs.json",
+    "pack": "bash pack.sh",
+    "minify": "node terser.js",
+    "prebuild": "npm run clean",
+    "build": "npm run build:scripts",
+    "build:scripts": "npm run versioning && npm run build:scripts:multiple && npm run build:scripts:single && npm run build:scripts:single:CLOUDAPPWORKER --readium-js-viewer:RJS_UGLY=no",
+    "build:scripts:single": "node ./readium-js/readium-shared-js/node_modules/requirejs/bin/r.js -o ./readium-js/readium-shared-js/readium-build-tools/RequireJS_config.js --rjs_bundle=single",
+    "build:scripts:single:CLOUDAPPWORKER": "node ./readium-js/readium-shared-js/node_modules/requirejs/bin/r.js -o ./readium-js/readium-shared-js/readium-build-tools/RequireJS_config.js --rjs_bundle=single --rjs_configOverrideTarget=_CLOUDAPP-WORKER",
+    "lint": "node ./readium-js/readium-shared-js/readium-build-tools/jshint_glob.js \"src/js/**.js\"",
+    "preversioning": "node ./readium-js/readium-shared-js/node_modules/mkdirp/bin/cmd.js build-output",
+    "versioning": "node build-config/versioning.js build-output/version.json",
+    "genPluginsConfig": "cd readium-js/readium-shared-js/ && node readium-build-tools/pluginsConfigMaker.js && cd ../..",
+    "prebuild:scripts": "npm run genPluginsConfig",
+    "prebuild:scripts:multiple": "node ./readium-js/readium-shared-js/node_modules/mkdirp/bin/cmd.js build-output/XXX && node ./readium-js/readium-shared-js/node_modules/ncp/bin/ncp src/templates/ build-output/XXX/templates/ && node ./readium-js/readium-shared-js/node_modules/ncp/bin/ncp src/i18n/ build-output/XXX/i18n/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js build-output/version.json build-output/XXX/",
+    "build:scripts:multiple": "node ./readium-js/readium-shared-js/node_modules/requirejs/bin/r.js -o ./readium-js/readium-shared-js/readium-build-tools/RequireJS_config.js --rjs_bundle=multiple",
+    "postbuild:scripts:multiple": "node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/XXX && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/_multiple-bundles/version.json && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/_multiple-bundles/templates && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/_multiple-bundles/i18n && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/_multiple-bundles/migration && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/_multiple-bundles/storage && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/_multiple-bundles/versioning && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/_multiple-bundles/workers && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/_multiple-bundles/mathjax && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js build-output/_multiple-bundles/z-worker.js build-output/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js build-output/_multiple-bundles/deflate.js build-output/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js build-output/_multiple-bundles/inflate.js build-output/ && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/_multiple-bundles/z-worker.js && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/_multiple-bundles/deflate.js && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/_multiple-bundles/inflate.js && ( node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js build-output/_multiple-bundles/z-worker.js.map build-output/ && ( node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js build-output/_multiple-bundles/deflate.js.map build-output/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js build-output/_multiple-bundles/inflate.js.map build-output/ && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/_multiple-bundles/z-worker.js.map && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/_multiple-bundles/deflate.js.map && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/_multiple-bundles/inflate.js.map ) || echo \"=== SUCCESS [ignore previous error]: no sourcemaps were generated for zip web-worker, deflate, inflate (no uglification).\" ) && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/_multiple-bundles/RequireJS.js.src.js && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/_multiple-bundles/inflate.js.src.js && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/_multiple-bundles/deflate.js.src.js && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js build-output/_multiple-bundles/z-worker.js.src.js",
+    "dist:cssoptimize": "node node_modules/clean-css-cli/bin/cleancss --skip-rebase --skip-advanced --level 0 \"node_modules/bootstrap/dist/css/bootstrap.css\" \"node_modules/bootstrap-accessibility-plugin/plugins/css/bootstrap-accessibility.css\" \"src/css/sourcesanspro.css\" \"src/css/readium_js.css\" \"src/css/viewer.css\" \"src/css/viewer_audio.css\" \"src/css/settings.css\"",
+    "predist": "npm run build && node ./readium-js/readium-shared-js/node_modules/mkdirp/bin/cmd.js dist",
+    "dist": "npm run dist:copy && npm run dist:cloudReader && npm run pack && npm run minify",
+    "distDev": "npm run dist:copy && npm run dist:cloudReader && npm run pack",
+    "dist+sourcemap": "npm run dist && npm run deploy:cloudReader:copy:sourcemap",
+    "dist:copy": "node ./readium-js/readium-shared-js/node_modules/mkdirp/bin/cmd.js dist/zip_sourcemap && ( node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js build-output/z-worker.js.map dist/zip_sourcemap && ( node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js build-output/deflate.js.map dist/zip_sourcemap && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js build-output/inflate.js.map dist/zip_sourcemap ) || ( echo \"=== SUCCESS [ignore previous error]: no sourcemaps were generated for zip web-worker, deflate, inflate (no uglification).\" && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js dist/zip_sourcemap ) )",
+    "predist:cloudReader": "node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js dist/cloud-reader && node ./readium-js/readium-shared-js/node_modules/rimraf/bin.js dist/cloud-reader_sourcemap",
+    "dist:cloudReader": "npm run dist:cloudReader:copy && npm run dist:cloudReader:copy:fonts && npm run dist:cloudReader:css && npm run dist:cloudReader:js",
+    "dist:cloudReader:copy": "node ./readium-js/readium-shared-js/node_modules/mkdirp/bin/cmd.js dist/cloud-reader/scripts/zip && node ./readium-js/readium-shared-js/node_modules/mkdirp/bin/cmd.js dist/cloud-reader/scripts/mathjax && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js src/cloud-reader/index.html dist/cloud-reader/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js src/cloud-reader/install-reader.html dist/cloud-reader/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js build-output/z-worker.js dist/cloud-reader/scripts/zip && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js build-output/deflate.js dist/cloud-reader/scripts/zip && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js build-output/inflate.js dist/cloud-reader/scripts/zip && node ./readium-js/readium-shared-js/node_modules/ncp/bin/ncp src/images/ dist/cloud-reader/images/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js node_modules/mathjax-single-file/dist/readium/MathJax.js dist/cloud-reader/scripts/mathjax && node ./readium-js/readium-shared-js/node_modules/ncp/bin/ncp node_modules/bootstrap/fonts/ dist/cloud-reader/fonts/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js src/css/annotations.css dist/cloud-reader/css/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js src/cloud-reader/manifest.json dist/cloud-reader/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js src/cloud-reader/peblSW.js dist/cloud-reader/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js src/cloud-reader/handlerSW.js dist/cloud-reader/scripts/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js src/js/PeBLCore.js dist/cloud-reader/scripts/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js src/js/Chart.min.js dist/cloud-reader/scripts/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js src/js/jquery-3.5.1.min.js dist/cloud-reader/scripts/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js src/js/jquerySizes.js dist/cloud-reader/scripts/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js src/css/pebl-discussion-widget.css dist/cloud-reader/css/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js src/css/pebl-login-widget.css dist/cloud-reader/css/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js src/css/all.min.css dist/cloud-reader/css/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js src/js/pebl-login-widget.js dist/cloud-reader/scripts/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js src/cloud-reader/config.js dist/cloud-reader/scripts/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js src/js/idb-iegap.js dist/cloud-reader/scripts/",
+    "dist:cloudReader:copy:fonts": "node ./readium-js/readium-shared-js/node_modules/ncp/bin/ncp src/webfonts/ dist/cloud-reader/webfonts/",
+    "dist:cloudReader:css": "node ./readium-js/readium-shared-js/node_modules/mkdirp/bin/cmd.js dist/cloud-reader/css && npm run dist:cssoptimize -- \"src/css/library.css\" \"-o\" \"dist/cloud-reader/css/readium-all.css\"",
+    "dist:cloudReader:js": "node ./readium-js/readium-shared-js/node_modules/mkdirp/bin/cmd.js dist/cloud-reader_sourcemap && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js build-output/_single-bundle/readium-js-viewer_all.js dist/cloud-reader/scripts/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js build-output/_single-bundle/readium-js-viewer_all.js.map dist/cloud-reader_sourcemap/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js build-output/_single-bundle/readium-js-viewer_CLOUDAPP-WORKER.js dist/cloud-reader/scripts/ && node ./readium-js/readium-shared-js/node_modules/cpy-cli/cli.js build-output/_single-bundle/readium-js-viewer_CLOUDAPP-WORKER.js.map dist/cloud-reader_sourcemap/"
+  }
+}

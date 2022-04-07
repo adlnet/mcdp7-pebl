@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<package version="3.0" xmlns="http://www.idpf.org/2007/opf" unique-identifier="bookid" prefix="ibooks: http://vocabulary.itunes.apple.com/rdf/ibooks/vocabulary-extensions-1.0/">
+	<metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+		<meta name="generator" content="Adobe InDesign 15.0.3"/>
+		<meta name="cover" content="x1.png"/>
+		<meta property="ibooks:specified-fonts">true</meta>
+		<dc:title>MCDP 7 Interactive E-Book</dc:title>
+		<dc:creator>United States Marine Corps</dc:creator>
+		<dc:subject>learning;MCDP</dc:subject>
+		<dc:description>The purpose of this publication is to describe the Marine Corps&#x2019; learning philosophy and explain why learning is critically important to the profession of arms. While many of the concepts in this publication have been passed on by Marine leaders throughout our history, this publication seeks to formalize them and provide aspirational goals. Learning is an institutional priority and a professional expectation for all Marines. This mentality is key to the Marine Corps becoming a more effective learning organization. The most important factor in this philosophy is the importance of continuous learning throughout our careers for warfighting.</dc:description>
+		<dc:publisher>United States Marine Corps https://www.marines.mil/News/Publications/MCPEL/Electronic-Library-Display/Article/2129863/mcdp-7/</dc:publisher>
+		<dc:date>30 Mar 2020</dc:date>
+		<dc:rights>This document is a work of the United States Government and the text is in the public domain in the United States. Subject to the following stipulation, it may be distributed and copied:&#x2029;&#x2028;&#x2029;&#x2028;&#x2022;	Copyrights to graphics and rights to trademarks/Service marks included in this document are reserved by original copyright or trademark/Service mark holders or their assignees, and are used here under a license to the Government and/or other permission.&#x2029;&#x2028;&#x2022;	The use or appearance of United States Marine Corps publications on a non-Federal Government website does not imply or constitute Marine Corps endorsement of the distribution service.</dc:rights>
+		<dc:language>en-US</dc:language>
+		<meta property="dcterms:modified">2020-07-14T08:36:15Z</meta>
+		<dc:identifier id="bookid">urn:uuid:0d36d173-ec78-497d-ab20-4dac3d13b85e</dc:identifier>
+	</metadata>
+	<manifest>
+		<item id="cover" href="cover.xhtml" media-type="application/xhtml+xml"/>
+		<item id="MCDP_USMC_-_PeBL_Master" href="MCDP_USMC_-_PeBL_Master.xhtml" media-type="application/xhtml+xml" properties="scripted"/>
+		<item id="MCDP_USMC_-_PeBL_Master-1" href="MCDP_USMC_-_PeBL_Master-1.xhtml" media-type="application/xhtml+xml" properties="scripted"/>
+		<item id="MCDP_USMC_-_PeBL_Master-2" href="MCDP_USMC_-_PeBL_Master-2.xhtml" media-type="application/xhtml+xml" properties="scripted"/>
+		<item id="MCDP_USMC_-_PeBL_Master-4" href="MCDP_USMC_-_PeBL_Master-4.xhtml" media-type="application/xhtml+xml" properties="scripted"/>
+		<item id="MCDP_USMC_-_PeBL_Master-5" href="MCDP_USMC_-_PeBL_Master-5.xhtml" media-type="application/xhtml+xml" properties="scripted"/>
+		<item id="MCDP_USMC_-_PeBL_Master-6" href="MCDP_USMC_-_PeBL_Master-6.xhtml" media-type="application/xhtml+xml" properties="scripted"/>
+		<item id="MCDP_USMC_-_PeBL_Master-7" href="MCDP_USMC_-_PeBL_Master-7.xhtml" media-type="application/xhtml+xml" properties="scripted"/>
+		<item id="MCDP_USMC_-_PeBL_Master-8" href="MCDP_USMC_-_PeBL_Master-8.xhtml" media-type="application/xhtml+xml" properties="scripted"/>
+		<item id="MCDP_USMC_-_PeBL_Master-9" href="MCDP_USMC_-_PeBL_Master-9.xhtml" media-type="application/xhtml+xml" properties="scripted"/>
+		<item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
+		<item id="toc" href="toc.xhtml" media-type="application/xhtml+xml" properties="nav"/>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<item id="OpenSans-Bold.ttf" href="font/OpenSans-Bold.ttf" media-type="application/x-font-ttf"/>
+		<item id="TimesNewRomanPS-BoldItalicMT.ttf" href="font/TimesNewRomanPS-BoldItalicMT.ttf" media-type="application/vnd.ms-opentype"/>
+		<item id="TimesNewRomanPS-BoldMT.ttf" href="font/TimesNewRomanPS-BoldMT.ttf" media-type="application/vnd.ms-opentype"/>
+		<item id="TimesNewRomanPS-ItalicMT.ttf" href="font/TimesNewRomanPS-ItalicMT.ttf" media-type="application/vnd.ms-opentype"/>
+		<item id="TimesNewRomanPSMT.ttf" href="font/TimesNewRomanPSMT.ttf" media-type="application/vnd.ms-opentype"/>
+		<item id="x1.jpg" href="image/1.jpg" media-type="image/jpeg" properties="cover-image"/>
+		<item id="x2.jpg" href="image/2.jpg" media-type="image/jpeg"/>
+		<item id="x3.png" href="image/3.png" media-type="image/png"/>
+		<item id="x4.png" href="image/4.png" media-type="image/png"/>
+		<item id="x5.png" href="image/5.png" media-type="image/png"/>
+		<item id="x6.png" href="image/6.png" media-type="image/png"/>
+		<item id="ch1-ammunitiondisposaltraining.jpg" href="image/ch1-ammunitiondisposaltraining.jpg" media-type="image/jpeg"/>
+		<item id="ch1-chanthuchorn.jpg" href="image/ch1-chanthuchorn.jpg" media-type="image/jpeg"/>
+		<item id="ch1-cherrypoint.jpg" href="image/ch1-cherrypoint.jpg" media-type="image/jpeg"/>
+		<item id="ch1-danger.jpg" href="image/ch1-danger.jpg" media-type="image/jpeg"/>
+		<item id="ch1-danielhaack.jpg" href="image/ch1-danielhaack.jpg" media-type="image/jpeg"/>
+		<item id="ch1-gray.jpg" href="image/ch1-gray.jpg" media-type="image/jpeg"/>
+		<item id="ch1-jacksonsuminski.jpg" href="image/ch1-jacksonsuminski.jpg" media-type="image/jpeg"/>
+		<item id="ch1-jamesengland.jpg" href="image/ch1-jamesengland.jpg" media-type="image/jpeg"/>
+		<item id="ch1-joshuayoung.jpg" href="image/ch1-joshuayoung.jpg" media-type="image/jpeg"/>
+		<item id="ch1-mahlock.jpg" href="image/ch1-mahlock.jpg" media-type="image/jpeg"/>
+		<item id="ch1-masks.jpg" href="image/ch1-masks.jpg" media-type="image/jpeg"/>
+		<item id="ch1-mattis-solitude.jpg" href="image/ch1-mattis-solitude.jpg" media-type="image/jpeg"/>
+		<item id="ch1-mattis.jpg" href="image/ch1-mattis.jpg" media-type="image/jpeg"/>
+		<item id="ch1-oodaloopposter.jpg" href="image/ch1-oodaloopposter.jpg" media-type="image/jpeg"/>
+		<item id="ch1-prestnodufrene.jpg" href="image/ch1-prestnodufrene.jpg" media-type="image/jpeg"/>
+		<item id="ch2-klipperceremony.jpg" href="image/ch2-klipperceremony.jpg" media-type="image/jpeg"/>
+		<item id="ch2-mattis-quote.jpg" href="image/ch2-mattis-quote.jpg" media-type="image/jpeg"/>
+		<item id="ch2-powell.jpg" href="image/ch2-powell.jpg" media-type="image/jpeg"/>
+		<item id="ch2-recruit.jpg" href="image/ch2-recruit.jpg" media-type="image/jpeg"/>
+		<item id="ch2-wynton.jpg" href="image/ch2-wynton.jpg" media-type="image/jpeg"/>
+		<item id="ch3-alexander.jpg" href="image/ch3-alexander.jpg" media-type="image/jpeg"/>
+		<item id="ch3-assessment-diagnostic.jpg" href="image/ch3-assessment-diagnostic.jpg" media-type="image/jpeg"/>
+		<item id="ch3-assessment-formative.jpg" href="image/ch3-assessment-formative.jpg" media-type="image/jpeg"/>
+		<item id="ch3-assessment-summative.jpg" href="image/ch3-assessment-summative.jpg" media-type="image/jpeg"/>
+		<item id="ch3-bonfacioaueluafilitaula.jpg" href="image/ch3-bonfacioaueluafilitaula.jpg" media-type="image/jpeg"/>
+		<item id="ch3-ccs.jpg" href="image/ch3-ccs.jpg" media-type="image/jpeg"/>
+		<item id="ch3-christinavalentine.jpg" href="image/ch3-christinavalentine.jpg" media-type="image/jpeg"/>
+		<item id="ch3-Clausewitz.jpg" href="image/ch3-Clausewitz.jpg" media-type="image/jpeg"/>
+		<item id="ch3-cyberprotection.jpg" href="image/ch3-cyberprotection.jpg" media-type="image/jpeg"/>
+		<item id="ch3-env-01.jpg" href="image/ch3-env-01.jpg" media-type="image/jpeg"/>
+		<item id="ch3-env-02.jpg" href="image/ch3-env-02.jpg" media-type="image/jpeg"/>
+		<item id="ch3-env-03.jpg" href="image/ch3-env-03.jpg" media-type="image/jpeg"/>
+		<item id="ch3-env-04.jpg" href="image/ch3-env-04.jpg" media-type="image/jpeg"/>
+		<item id="ch3-env-05.jpg" href="image/ch3-env-05.jpg" media-type="image/jpeg"/>
+		<item id="ch3-env-06.jpg" href="image/ch3-env-06.jpg" media-type="image/jpeg"/>
+		<item id="ch3-env-07.jpg" href="image/ch3-env-07.jpg" media-type="image/jpeg"/>
+		<item id="ch3-env-08.jpg" href="image/ch3-env-08.jpg" media-type="image/jpeg"/>
+		<item id="ch3-forsvaret.jpg" href="image/ch3-forsvaret.jpg" media-type="image/jpeg"/>
+		<item id="ch3-rappel.jpg" href="image/ch3-rappel.jpg" media-type="image/jpeg"/>
+		<item id="ch3-rickover.jpg" href="image/ch3-rickover.jpg" media-type="image/jpeg"/>
+		<item id="ch4-boyd.jpg" href="image/ch4-boyd.jpg" media-type="image/jpeg"/>
+		<item id="ch4-computerlab-resized.jpg" href="image/ch4-computerlab-resized.jpg" media-type="image/jpeg"/>
+		<item id="ch4-dunford2.JPG" href="image/ch4-dunford2.JPG" media-type="image/jpeg"/>
+		<item id="ch4-eagle-globe-and-anchor_1000_px.jpg" href="image/ch4-eagle-globe-and-anchor_1000_px.jpg" media-type="image/jpeg"/>
+		<item id="ch4-gray-casual-resized.jpg" href="image/ch4-gray-casual-resized.jpg" media-type="image/jpeg"/>
+		<item id="ch4-gray-casual-resized1.jpg" href="image/ch4-gray-casual-resized1.jpg" media-type="image/jpeg"/>
+		<item id="ch4-gray-casual.jpg" href="image/ch4-gray-casual.jpg" media-type="image/jpeg"/>
+		<item id="ch4-jfk-orig.jpg" href="image/ch4-jfk-orig.jpg" media-type="image/jpeg"/>
+		<item id="ch4-lejeune.jpg" href="image/ch4-lejeune.jpg" media-type="image/jpeg"/>
+		<item id="ch4-officer_1000px.jpg" href="image/ch4-officer_1000px.jpg" media-type="image/jpeg"/>
+		<item id="ch4-pullup-resized.jpg" href="image/ch4-pullup-resized.jpg" media-type="image/jpeg"/>
+		<item id="drill_instructor.jpg" href="image/drill_instructor.jpg" media-type="image/jpeg"/>
+		<item id="Screen_Shot_2020-03-02_at_12.17.17_PM.jpg" href="image/Screen_Shot_2020-03-02_at_12.17.17_PM.jpg" media-type="image/jpeg"/>
+		<item id="Slide1.jpg" href="image/Slide1.jpg" media-type="image/jpeg"/>
+		<item id="Slide2.jpg" href="image/Slide2.jpg" media-type="image/jpeg"/>
+		<item id="Slide3.jpg" href="image/Slide3.jpg" media-type="image/jpeg"/>
+		<item id="Slide4.jpg" href="image/Slide4.jpg" media-type="image/jpeg"/>
+    <item id="mc-header-photo.jpg" href="image/mc-header-photo.jpg" media-type="image/jpeg"/>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	<item href="webfonts/fa-brands-400.woff2" media-type="font/woff2"/><item href="webfonts/fa-regular-400.woff2" media-type="font/woff2"/><item href="webfonts/fa-solid-900.woff2" media-type="font/woff2"/><item href="script/packed.js" media-type="text/javascript"/><item href="css/packed.css" media-type="text/css"/></manifest>
+	<spine toc="ncx">
+		<itemref idref="cover" linear="no"/>
+		<itemref idref="MCDP_USMC_-_PeBL_Master"/>
+		<itemref idref="MCDP_USMC_-_PeBL_Master-1"/>
+		<itemref idref="MCDP_USMC_-_PeBL_Master-2"/>
+		<itemref idref="MCDP_USMC_-_PeBL_Master-4"/>
+		<itemref idref="MCDP_USMC_-_PeBL_Master-5"/>
+		<itemref idref="MCDP_USMC_-_PeBL_Master-6"/>
+		<itemref idref="MCDP_USMC_-_PeBL_Master-7"/>
+		<itemref idref="MCDP_USMC_-_PeBL_Master-8"/>
+		<itemref idref="MCDP_USMC_-_PeBL_Master-9"/>
+	</spine>
+	<guide>
+		<reference type="cover" href="cover.xhtml" title="Cover"/>
+	</guide>
+</package>

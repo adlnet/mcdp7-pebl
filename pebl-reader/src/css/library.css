@@ -1,0 +1,598 @@
+#readerCurrentClass {
+    color: gray;
+}
+
+#app-container{
+    overflow-x: hidden;
+}
+
+#skip-main {
+    position: absolute;
+    left: -1000px;
+    top:-1000px;
+}
+
+a.skip-main {
+    left: -999px;
+    position: absolute;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: -999;
+}
+
+a.skip-main:focus {
+    left: auto;
+    top: auto;
+    width: 30%;
+    height: auto;
+    overflow: auto;
+    margin: 0 35%;
+    padding: 5px;
+    font-size: 20px;
+    outline: 3px solid red;
+    text-align: center;
+    z-index: 999;
+}
+
+#library-body,
+#analytics-body {
+    width: 100%;
+    padding-left: 6em;
+}
+
+#empty-message{
+    display: inline-block;
+    font-size: 28px;
+    width: 200px;
+    margin-right: 60px;
+    margin-top: 30px;
+    font-family: "Source Sans Pro";
+}
+
+#empty-message-arrow{
+    position: absolute;
+    right: 42px;
+    top: 40px;
+}
+
+.library-items{
+    margin: 20px 10px;
+}
+.library-item{
+    position: relative;
+
+    padding-bottom: 20px;
+}
+
+.offscreenText{
+    display:none;
+}
+
+.details{
+    display: none;
+}
+
+.details-body .buttons{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    min-width: 150%;
+    text-align: left;
+}
+
+.no-cover{
+
+    cursor: pointer;
+        
+    height: 190px;
+    
+    width: 142px;
+    font-size: 19px;
+    
+    
+    display: table;
+    
+    table-layout: fixed;
+    
+    padding: 0;
+    color: white;
+    font-family: serif;
+}
+
+.no-cover p{
+    display: table-cell;
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    
+    vertical-align: middle;
+    text-align: center;
+
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.details-body .no-cover{
+    width: 150px;
+    height: 200px;
+    font-size: 20px;
+}
+
+.modal-cover-wrap img{
+    max-width: 150px;
+    max-height: 200px;
+}
+
+.modal-cover-wrap{
+    position: relative;
+    margin-right: 20px;
+    height: 240px;
+    display: inline-block;
+    max-width: 185px;
+    vertical-align: top;
+}
+.modal-book-info{
+    display: inline-block;
+    vertical-align: top;
+    max-width: 370px;
+}
+.details-body{
+    height: 100%;
+}
+
+.title, .author{
+    /*text-align: center;*/
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left:5px;
+    font-family: "Source Sans Pro"
+}
+
+.title{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.author{
+    color: #555;
+}
+
+nav #remotestorage-widget, nav #remotestorage-widget .rs-cube {
+    position: static;
+}
+
+/* list view styles */
+body.list-view #app-container{
+    position: relative;
+}
+body.list-view #app-container .library-item{
+    width: 100%;
+    height: 250px;
+    position: static;
+    display: table-row;
+}
+
+.info-wrap {
+    overflow: hidden;
+    position: relative;
+}
+
+body:not(.list-view) #app-container .library-item .info-wrap .no-cover {
+    border: 1px solid #efefef;
+    border-radius: 3px;
+}
+
+body:not(.list-view) #app-container .library-item .info-wrap button {
+    width: 110%;
+}
+
+body.list-view #app-container .library-item .book-info,
+body.list-view #app-container .library-item .info-wrap{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+body.list-view #app-container .library-item .book-info{
+    padding-left: 20px;
+}
+
+body.list-view #app-container .library-item .book-info .title{
+    font-size: 24px;
+    font-weight: normal;
+    text-align: left;
+    white-space: normal;
+}
+body.list-view #app-container .library-item .book-info .author{
+    text-align: left;
+}
+
+/*
+body.list-view #app-container .library-item img{
+    height: 190px;
+    width: 142px;
+    max-width: 142px;
+}
+*/
+
+.latest-release .has-cover:before {
+    content: "Latest Release";
+    font-family: "Source Sans Pro";
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background: #e43;
+    position: absolute;
+    top: 25px;
+    left: -60px;
+    text-align: center;
+    line-height: 2em;
+    letter-spacing: 1px;
+    color: #f0f0f0;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+}
+.has-cover{
+    background-repeat:no-repeat;
+    background-position:center;
+    background-attachment:scroll;
+    
+    background-size:contain;
+
+    -webkit-background-clip:content-box;
+    -webkit-background-origin:content-box;
+}
+
+body.list-view .buttons{
+    margin-top: 10px;
+}
+body.list-view .details{
+    display: inline;
+}
+
+
+/*.icon-library, .icon-library:active{
+  background-image: url('../images/glyphicons_319_sort.png');
+}
+
+.icon-add-epub, .icon-add-epub:active{
+  background-image: url('../images/glyphicons_432_plus.png');
+}
+
+.icon-thumbnails, .icon-thumbnails:active{
+  background-image: url('../images/glyphicons_156_show_thumbnails.png');
+}
+
+.icon-list-view, .icon-list-view:active{
+  background-image: url('../images/glyphicons_158_show_lines.png');
+}*/
+
+.icon-thumbnails{
+    display:none;
+}
+
+.list-view .icon-thumbnails{
+    display:block;
+}
+
+.list-view .icon-list-view{
+    display:none;
+}
+
+
+.library-item button[data-link] div p {
+    margin: 0;
+    padding: 0;
+}
+.library-item button[data-link] div p:before {
+    
+    content: ">>>>";
+    
+    font-family: sans-serif;
+    font-weight: bold;
+    
+    font-size: 0.5em;
+    padding: 0.3em;
+    margin: 0;
+    
+    background-color: black;
+    color: white;
+    
+    border: 0.12em solid white;
+    
+    opacity: 0.8;
+    
+    width: 100%;    
+    
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+.library-item > .info-wrap > button > div.has-cover {
+    background-size: cover;
+}
+
+.library-row-title {
+    margin-left: 0.5em;
+}
+
+body:not(.list-view) .library-item {
+    margin-bottom: 30px;
+}
+
+body:not(.list-view) #app-container.show-delete .library-item {
+    margin-bottom: 70px;
+}
+
+#install-spinner-body > .spinner,
+#analytics-spinner-body > .spinner,
+#upload-epub-spinner-body > .spinner {
+    height: 100px;
+    margin-top: 100px;
+    position: relative !important;
+}
+
+.delete-book-button {
+    color: #fff;
+    background-color: #da5243;
+    border-color: #da5243;
+}
+
+.download-book-button {
+    color: #fff;
+    background-color: #0aa6bf;
+    border-color: #0aa6bf;
+}
+
+#settings-dialog .tab-content {
+    max-height: 400px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#keyboard-list.atLeastOneInvalidOrDuplicateShortcut {
+    border: none;
+}
+
+#keyboard-list>li.invalidShortcut>input {
+    border: 1px solid #bbb;
+    background-color: lightyellow;
+
+}
+
+#keyboard-list label {
+    max-width: 50%;
+}
+
+#search-library-body {
+  display: none;
+}
+
+.search-library-visible#search-library-body {
+    display: block;
+    position: fixed;
+    width: 30%;
+    top: 38px;
+    right: -1px;
+    bottom: 0;
+}
+
+#addbutt,
+.delete-book-button {
+    display: none;
+}
+
+.show-upload #addbutt  {
+    display: block;
+}
+
+.show-delete .delete-book-button {
+    display: inline-block;
+}
+
+#app-container.show-adminSidebar #adminSidebar {
+    display: flex;
+}
+
+#adminSidebar {
+    left: 0;
+    position: fixed;
+    top: 38px;
+    bottom: 0;
+    background-color: #2B3137;
+    z-index: 100;
+    border-radius: 0 1rem 0 0;
+    padding: 1em;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h2.adminSidebar_title {
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.adminSidebar_title .fas {
+    color: #0AA6BF;
+}
+
+.adminSidebar_toolWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.adminSidebar_toolWrapper .button {
+    opacity: 0.5;
+}
+
+.adminSidebar-button {
+    text-align: left;
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 0.5em;
+    margin: 0;
+    opacity: 0.5;
+    border-radius: 0.3em;
+    min-width: 3em;
+}
+
+.adminSidebar-button:hover,
+.adminSidebar-button.is-active {
+    opacity: 1;
+    background-color: #15171B;
+}
+
+
+.adminSidebar-button i.fas {
+    margin-right: 1em;
+}
+
+
+.adminSidebar_footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1em 0 0 0;
+}
+
+/* Collapsed styles */
+
+.show-on-collapse {
+    display: none;
+}
+
+.is-collapsed .show-on-collapse {
+    display: block;
+}
+
+#adminSidebar.is-collapsed {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#adminSidebar.is-collapsed .adminSidebar-button {
+    text-align: center;
+}
+
+#adminSidebar.is-collapsed .button .fas {
+    margin: 0;
+}
+
+#adminSidebar.is-collapsed .hide-on-collapse {
+    display: none;
+}
+
+#adminSidebar.is-collapsed .show-on-collapse {
+    display: block;
+}
+
+#percentageCompletionContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 5em;
+}
+
+#percentageCompletionContainer > div {
+    width: 25%;
+}
+
+#percentageCompletionContainer > div > h4 {
+    text-align: center;
+}
+
+#mostAnsweredQuestionCountsContainer > div,
+#leastAnsweredQuestionCountsContainer > div,
+#reportedMessagesCountsContainer > div {
+    display: flex;
+    margin-bottom: 1em;
+}
+
+#mostAnsweredQuestionCountsContainer > div > span,
+#leastAnsweredQuestionCountsContainer > div > span,
+#reportedMessagesCountsContainer > div > span {
+    margin-right: 1em;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#questionCountsContainer,
+#reportedMessagesContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5em;
+}
+
+#questionCountsContainer > div,
+#reportedMessagesContainer > div {
+    width: 100%;
+    margin-right: 2em;
+}
+
+#reportedMessagesCountsContainer > div > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#reportedMessagesCountsContainer span.username {
+    font-weight: bold;
+}
+
+#reportedMessagesCountsContainer button {
+    margin-right: 1em;
+}
+
+#quizChartContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 5em;
+}
+
+#quizChartContainer > div {
+    text-align: center;
+    width: 50%;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+
+
+@media (max-width:768px){
+
+    body:not(.list-view) .library-item {
+        margin-bottom: 70px;
+    }
+
+    body:not(.list-view) #app-container.show-delete .library-item {
+        margin-bottom: 110px;
+    }
+
+    body.list-view #app-container .library-item .info-wrap{
+        padding-bottom: 0px;
+        padding-left: 0px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    body:not(.list-view) .library-item {
+        margin-bottom: 90px;
+    }
+
+    body:not(.list-view) #app-container.show-delete .library-item {
+        margin-bottom: 130px;
+    }
+
+    body:not(.list-view) .download-book-button {
+        white-space: normal;
+    }
+}
