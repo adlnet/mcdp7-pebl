@@ -1,8 +1,7 @@
 ## MCDP7 PeBL Stack
 This repo includes a simplified version of PeBL stack for deploying just the Marine Corps Doctrinal Publication in Epub format.
 
-### *"Can I just view MCDP7 in Epub format without all of this work?*
-Absolutely, **[Click here for a live version with Guest login](https://pebl.castle.adlnet.gov)** available in one of the ADL sandboxes.
+Want to view MCDP7 without all of the installation hassle?  We have **[a live instance of PeBL with guest login](https://pebl.castle.adlnet.gov)** available in one of the ADL sandboxes.
 
 ### Installation 
 Deploying your own PeBL stack with this repository will have a few steps:
