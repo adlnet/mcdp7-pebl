@@ -1,43 +1,30 @@
-# PeBL services
+## MCPD7 PeBL Services
+Setting up the PeBL Services server is pretty straightforward, but does require setting a few config values.
 
-## Pre-requisites
+### TL;DR
+1. `git clone https://github.com/adlnet/mcdp7-pebl`
+1. `cd mcdp7-pebl/pebl-services`
+1. `sudo ./install-reqs.sh`
+1. `sudo ./init-ssl.sh <domain-name>`
+1. `cp .env.example .env`
+1. `nano .env` and change the important values (see below)
+1. `sudo ./rebuild.sh`
+1. `sudo ./certbot/generate.sh <domain-name>`
 
-### Compile Dependencies
+You should be done, so next will be setting up the `pebl-reader` server.
 
-* npm       6.14.4+
-* nodejs    13.14.0+
+### Setting the `.env` Values
+Only a few of these values need to change:
 
-#### Compile
+- `SERVER_NAME`: Public domain name for your server
+- `SERVICE_PORT`: Port being used by the PeBL Services (usually 80 or 443 for SSL)
+- `AUTH_DOMAIN`: The Keycloak root path of your server (usually ends with `/auth`)
+- `AUTH_CLIENT_SECRET`: Create this in the Keycloak admin panel, on the Credentials tab for your `perls-client` Client
 
-`npm install`
-`npm run compile`
+Optionally, you can also specify:
 
-This will create a dist folder.
+- `LRS_URL`: LRS to use for PeBL's xAPI statements
+- `LRS_BASIC_AUTH`: Basic auth string to use for the LRS
+- `SESSION_SECRET`: More secure string for communication between the Web Reader and the PeBL Services -- must each use the same value though.
 
-The dist folder and the package.json together form the PeBL services installer.
-
-Copy the dist folder and the package.json to a new folder to generate the full bundle for deployment.
-
-Within the new folder with the dist folder and package.json run
-
-`npm install --production`
-
-The above command will create a `node_modules` folder with only the runtime dependencies needed for PeBL services.
-
-The complete services package is:
-
-* node_modules folder
-* dist folder
-* package.json (optional)
-
-Which ideally are zipped together and sent to the server that will host the PeBL Services
-
-This folder structure should be maintained at the install site.
-
-## Wiki 
-
-https://github.com/peblproject/PeBL-Services/wiki/Deploying-PeBL-Services
-
-# Misc ssh restriction
-
-command="echo 'Port forwarding for only.'",restrict,port-forwarding,permitopen="localhost:6379",permitopen="127.0.0.1:6379"  
+For the original PeBL Services documentation, visit the [peblproject GitHub page](https://github.com/peblproject).
