@@ -12,8 +12,6 @@ On an Ubuntu-like OS:
 1. `nano .env` and change the important values (see below)
 1. `sudo ./rebuild.sh`
 1. `sudo ./certbot/generate.sh <domain-name>`
-1. Import the PeBL Realm file
-1. Update the PeBL Client secret and keep it handy
 
 ### Setting the `.env` Values
 For the `.env` file, only a few values need to change for the reader:
