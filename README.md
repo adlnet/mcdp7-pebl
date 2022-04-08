@@ -16,16 +16,16 @@ Each of these steps is performed with Docker and the corresponding folders all i
 ### Additional Info on PeBL and Deployment
 For something this simple, you may be asking *"Why so many steps?"*  The PeBL system depends on a few systems for deployment.
 
-#### The PeBL Web Reader
+#### The PeBL Web Reader 📖
 This is where users actually visit to use PeBL.  The server itself is fairly lightweight, as the PeBL reader is built into a simple HTML page that calls on the PeBL Services machine for other functionality.
 
-#### PeBL Services
+#### PeBL Services 🐕‍🦺
 This machine handles xAPI communication and informs the PeBL Web Reader about where to send the user for Sign-On.  As web-sockets are used, manual deployment typically requires that the 
 
-#### A Sign-On System
+#### A Sign-On System 🔑
 While PeBL can also work with Google as an auth provider, most deployments use an instance of Keycloak.  In this repo, the `pebl-auth` folder contains instructions for standing up your own instance of Keycloak to use.
 
-#### An LRS (or Learning Record Store) for xAPI
+#### An LRS (or Learning Record Store) for xAPI 📝
 Lastly, PeBL will send xAPI statements about its usage to an LRS. 
 
 Guest users do not have statements sent about them.
